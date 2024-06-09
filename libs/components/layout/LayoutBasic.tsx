@@ -11,6 +11,8 @@ const withLayoutBasic = (Component: any) => {
           <title>Nestar</title>
         </Head>
         <Stack id="pc-wrap">
+          {"//pc-wrap: pc version degani "}
+          //pc-wrap: pc version degani
           <Stack id="top">
             <Top />
           </Stack>
