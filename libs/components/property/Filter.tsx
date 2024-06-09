@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import MenuItem from "@mui/material/MenuItem";
+import { propertySquare } from "@/libs/config";
 
 const Filter = () => {
   const [searchText, setSearchText] = useState<string>("");
@@ -21,6 +22,17 @@ const Filter = () => {
     start: 0,
     end: 250000,
   });
+
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(500);
+
+  const handleMinChange = (event: any) => {
+    setMinValue(event.target.value);
+  };
+
+  const handleMaxChange = (event: any) => {
+    setMaxValue(event.target.value);
+  };
 
   return (
     <Stack className="filter-main">
@@ -229,15 +241,15 @@ const Filter = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={0}
+              value={minValue}
+              onChange={handleMinChange}
               label="Min"
             >
-              <MenuItem value={0}>0</MenuItem>
-              {/* {propertySquare.map((square: number) => (
+              {propertySquare.map((square: number) => (
                 <MenuItem value={square} key={square}>
                   {square}
                 </MenuItem>
-              ))} */}
+              ))}
             </Select>
           </FormControl>
           <div className="central-divider"></div>
@@ -246,15 +258,15 @@ const Filter = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={500}
+              value={maxValue}
+              onChange={handleMaxChange}
               label="Max"
             >
-              <MenuItem value={500}>500</MenuItem>
-              {/* {propertySquare.map((square: number) => (
+              {propertySquare.map((square: number) => (
                 <MenuItem value={square} key={square}>
                   {square}
                 </MenuItem>
-              ))} */}
+              ))}
             </Select>
           </FormControl>
         </Stack>
